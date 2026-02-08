@@ -1,33 +1,55 @@
-import React from "react";
-import { copyright, x } from "../assets";
+/** @format */
+
+import React from 'react';
+import { Copyright } from 'lucide-react';
 
 const Footer = () => {
-  return (
-    <div className="w-full flex justify-center items-center gap-1 dark:bg-dark dark:text-textDark2 py-3">
-      <svg
-        fill="#000000"
-        height="20px"
-        width="20px"
-        version="1.1"
-        id="Capa_1"
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        viewBox="0 0 367.467 367.467"
-        xml:space="preserve"
-      >
-        <g id="SVGRepo_iconCarrier " className="">
-          <g>
-            <path d="M183.73,0.018C82.427,0.018,0,82.404,0,183.733c0,101.289,82.427,183.716,183.73,183.716 c101.315,0,183.737-82.427,183.737-183.716C367.467,82.404,285.045,0.018,183.73,0.018z M183.73,326.518 c-78.743,0-142.798-64.052-142.798-142.784c0-78.766,64.055-142.817,142.798-142.817c78.752,0,142.807,64.052,142.807,142.817 C326.536,262.466,262.481,326.518,183.73,326.518z"></path>{" "}
-            <path d="M244.036,217.014c-11.737,20.141-33.562,32.635-56.956,32.635c-36.329,0-65.921-29.585-65.921-65.915 c0-36.36,29.592-65.955,65.921-65.955c23.395,0,45.219,12.54,56.956,32.641l1.517,2.627h44.28l-2.658-7.129 c-7.705-20.413-21.225-37.769-39.122-50.157c-17.942-12.42-39.017-19.009-60.973-19.009c-58.981,0-106.946,48.006-106.946,106.982 c0,58.98,47.965,106.941,106.946,106.941c21.956,0,43.03-6.567,60.973-19.006c17.897-12.391,31.417-29.741,39.122-50.154 l2.658-7.133h-44.28L244.036,217.014z"></path>{" "}
-          </g>
-        </g>
-      </svg>
-      <p className="text-sm sm:text-md">
-        {" "}
-        2023 | Designed and coded with ❤️ by Alex Chandra Hanif
-      </p>
-    </div>
-  );
+	// Mengambil tahun saat ini secara dinamis
+	const currentYear = new Date().getFullYear();
+
+	return (
+		<footer className="w-full bg-slate-50 dark:bg-dark-bg border-t border-slate-100 dark:border-slate-800 py-8 transition-colors duration-300">
+			<div className="container mx-auto px-6 flex flex-col items-center justify-center gap-3">
+				{/* Copyright Section */}
+				<div className="flex items-center gap-2 text-secondary dark:text-slate-400">
+					<Copyright
+						size={16}
+						className="text-primary"
+					/>
+					<p className="text-sm md:text-base font-medium font-inter">
+						{currentYear} |{' '}
+						<span className="text-light-text dark:text-white">
+							Alex Chandra Hanif
+						</span>
+					</p>
+				</div>
+
+				{/* Tech Credits */}
+				<p className="text-xs md:text-sm text-slate-400 dark:text-slate-500 flex items-center gap-1.5">
+					Designed and coded with
+					<span className="text-red-500 animate-pulse text-lg">❤️</span>
+					by Alex Chandra Hanif
+				</p>
+
+				{/* Floating Indicator (Optional decoration) */}
+				<div className="mt-4 w-12 h-1 bg-primary/20 rounded-full overflow-hidden">
+					<div className="w-1/2 h-full bg-primary animate-[move_2s_linear_infinite]"></div>
+				</div>
+			</div>
+
+			{/* Style untuk animasi bar kecil di bawah */}
+			<style jsx>{`
+				@keyframes move {
+					0% {
+						transform: translateX(-100%);
+					}
+					100% {
+						transform: translateX(200%);
+					}
+				}
+			`}</style>
+		</footer>
+	);
 };
 
 export default Footer;
